@@ -264,11 +264,11 @@
     }
 
     function downloadCSV(){
-      const idPDB = document.getElementById("idpdb")
-      const name = document.getElementById("name")
+      const idPDB = stage.compList[0].structure.id
+      const name = stage.compList[0].structure.title
       const rows = [
-        ["PDB Identifier", stage.compList[0].structure.id],
-        ["Protein Name", stage.compList[0].structure.title]
+        ["PDB Identifier", idPDB],
+        ["Protein Name", name]
       ];
       let csvContent = "data:text/csv;charset=utf-8,";
       rows.forEach(function(rowArray){
