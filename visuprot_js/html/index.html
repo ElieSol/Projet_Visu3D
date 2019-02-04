@@ -267,8 +267,8 @@
       const idPDB = document.getElementById("idpdb")
       const name = document.getElementById("name")
       const rows = [
-        ["PDB Identifier", idPDB],
-        ["Protein Name", name]
+        ["PDB Identifier", stage.compList[0].structure.id],
+        ["Protein Name", stage.compList[0].structure.title]
       ];
       let csvContent = "data:text/csv;charset=utf-8,";
       rows.forEach(function(rowArray){
