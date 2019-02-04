@@ -254,6 +254,30 @@
         NGL.download(blob, "screenshot.png");
       });
     }
+      
+       //Download PDB
+    
+    function downloadPDB(){
+      var idPdb = document.getElementById("field1").value;
+      var url = "https://dx.doi.org/10.2210/pdb"+idPdb+"/pdb"
+      window.open(url,'_blank');
+    }
+
+    function downloadCSV(){
+      const idPDB = stage.compList[0].structure.id
+      const name = stage.compList[0].structure.title
+      const rows = [
+        ["PDB Identifier", idPDB],
+        ["Protein Name", name]
+      ];
+      let csvContent = "data:text/csv;charset=utf-8,";
+      rows.forEach(function(rowArray){
+        let row = rowArray.join(",");
+        csvContent += row + "\r\n";
+      });
+      var encodedUri = encodeURI(csvContent);
+      window.open(encodedUri);
+    }
 
     // Fullscreen
 
@@ -262,20 +286,12 @@
       stage.toggleFullscreen();
     }
 
-    //Download PDB
-
-    function downloadPDB(){
-      var idPdb = document.getElementById("field1").value;
-      var url = "https://dx.doi.org/10.2210/pdb"+idPdb+"/pdb"
-      window.open(url,'_blank');
-    }
-
   </script>
 
 </body>
 <script src="/src/style.js"></script>
 <!-- <script src="src/ligandViewer.js"></script> -->
-<script src="/src/navbar.js"></script>
+<script src="../src/navbar.js"></script>
 
 
 </html>
